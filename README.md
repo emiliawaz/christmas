@@ -1,17 +1,24 @@
-## Setup
-Install Node.js with npm: https://nodejs.org/en/download/
+# christmas
 
-Run terminal in project's folder and enter commands:
-
-``` bash
-# install dependencies
+## Project setup
+```
 npm install
+```
 
-# serve with hot reload at localhost:8080
-npm run dev
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
 
-# build for production with minification
+### Compiles and minifies for production
+```
 npm run build
 ```
 
-You will find a running app on  http://localhost:8080/
+### Lints and fixes files
+```
+npm run lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).

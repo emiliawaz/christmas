@@ -1,12 +1,18 @@
 <template>
-  <div class="c-list" :class="isPink ? 'c-list--pink' : ''">
+  <div class="c-list" :class="isGreen ? 'c-list--green' : ''">
     <h2 class="c-list__title">{{ title }}</h2>
     <ol class="c-list__content" v-if="list.length">
       <li 
         class="c-list__item"
         v-for="(item, i) in list"
         :key="`${item}-${i}`">
-        {{ item }}</li>
+        {{ item }}
+        <button 
+          class="c-list__button" 
+          title="Remove this person from list" 
+          @click="$emit('remove-person', i)"
+          v-if="!isGreen">&#10006;</button>
+        </li>
     </ol>
     <div class="c-list__content c-list__content--empty" v-else>
       List is empty
@@ -24,7 +30,7 @@ export default {
       default: () => []
     },
 
-    isPink: {
+    isGreen: {
       type: Boolean,
       default: false
     },
@@ -47,10 +53,10 @@ export default {
   font-size: 2rem;
   display: inline-block;
 
-  &.c-list--pink {
-    background: #ffbae2e3;
+  &.c-list--green {
+    background: #44c483e3;
     .c-list__item {
-      border-bottom: 1px solid #e96fa2;
+      border-bottom: 1px solid #298a59;
       &:last-child {
         border: 0;
       }
@@ -73,9 +79,29 @@ export default {
 .c-list__item {
   padding: 1.5rem 1rem;
   border-bottom: 1px solid #ddb45c;
+  position: relative;
 
   &:last-child {
     border: 0;
+  }
+}
+
+.c-list__button {
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  top: 0;
+  border: 0;
+  background: transparent;
+  color: #ff256e;
+  font-size: 2rem;
+  border-radius: .5rem;
+  padding: .5rem 1rem;
+  margin: 1rem;
+  right: 0;
+
+  &:hover {
+    background: #4f4f4f15;
   }
 }
 </style>

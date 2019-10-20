@@ -1,7 +1,7 @@
 <template>
   <div class="c-adding-form">
     <label class="c-adding-form__label" for="name">Add new person to the list</label>
-    <input class="c-adding-form__input" type="text" id="name" v-model="newName"/>
+    <input class="c-adding-form__input" type="text" id="name" @click="selectText" v-model="newName"/>
     <button class="c-adding-form__button" @click="$emit('new-name-added', newName)">ADD</button>
   </div>
 </template>
@@ -14,11 +14,19 @@ export default {
     return {
       newName: ''
     }
+  },
+
+  methods: {
+    selectText(event) {
+      let input = event.target
+
+      input.setSelectionRange(0, input.value.length)
+    }
   }
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .c-adding-form {
   background: rgba(255, 255, 255, 0.521);
   margin: 3rem auto;
@@ -51,5 +59,9 @@ export default {
   border-radius: .5rem;
   cursor: pointer;
   margin-left: 1rem;
+
+  &:hover {
+    background: #d4205c;
+  }
 }
 </style>
